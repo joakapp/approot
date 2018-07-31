@@ -1,0 +1,8 @@
+#配置服务器访问信息，端口，访问地址
+server:
+  port: 8081
+  servlet:
+    context-path:
+spring:
+  application:
+    name: db
