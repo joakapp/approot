@@ -17,8 +17,27 @@
         <mybatis-plus-boot-starter.version>3.0-alpha</mybatis-plus-boot-starter.version>
         <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
         <vesta-service.version>0.0.1</vesta-service.version>
+        <HikariCP.version>3.2.0</HikariCP.version>
+        <mysql-connector-java.version>6.0.5</mysql-connector-java.version>
     </properties>
 
-
-
+    <dependencies>
+        <!-- ID生成器-->
+        <dependency>
+            <groupId>com.robert.vesta</groupId>
+            <artifactId>vesta-service</artifactId>
+            <version>${vesta-service.version}</version>
+        </dependency>
+        <!--配置数据源-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+    </dependencies>
 </project>

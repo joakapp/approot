@@ -6,3 +6,40 @@ server:
 spring:
   application:
     name: db
+#hikari数据源配置信息
+dbServer:
+  default: 172.21.1.179:3306
+  slave: 172.21.1.207:3306
+  master: 172.21.1.179:3306
+  slaveMethods: select,find,query
+hikari:
+  master:
+    type: com.zaxxer.hikari.HikariDataSource
+    pool-name: write
+    continue-on-error: false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://${dbServer.default}/stbhdb?serverTimezone=UTC&useSSL=true&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    connection-timeout: 30000
+    connection-test-query: SELECT 1
+    maximum-pool-size: 5
+    minimum-idle: 2
+    idle-timeout: 600000
+    destroy-method: shutdown
+    auto-commit: true
+  slave:
+    type: com.zaxxer.hikari.HikariDataSource
+    pool-name: read
+    continue-on-error: false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://${dbServer.slave}/stbhdb?serverTimezone=UTC&useSSL=true&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    connection-timeout: 30000
+    connection-test-query: SELECT 1
+    maximum-pool-size: 5
+    minimum-idle: 2
+    idle-timeout: 600000
+    destroy-method: shutdown
+    auto-commit: true
